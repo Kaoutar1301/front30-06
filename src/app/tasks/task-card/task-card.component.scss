@@ -1,0 +1,62 @@
+.task-wrapper {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #335f8a;
+  border-radius: 8px;
+  padding: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #335f8a;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.card-title {
+  color: #2f4558;
+  font-size: 18px;
+  margin: 0;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-delete-icons {
+  color: #f26619;
+}
+
+.card-body {
+  color: #2f4558;
+}
+
+.card-footer {
+  color: #335f8a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-text {
+  margin-top: 0;
+}
+
+.comment-section {
+  margin-top: 10px;
+}
+
+.add-comment-button {
+  margin-top: 10px;
+}

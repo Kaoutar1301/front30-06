@@ -1,0 +1,24 @@
+<div class="list-container">
+  <header class="list-header">
+    <h2 class="list-title">{{ title }}</h2>
+    <div class="icon-group">
+      <i class="fas fa-edit edit-icon"></i>
+      <i class="fas fa-trash delete-icon"></i>
+    </div>
+  </header>
+  <ul class="list-items">
+    <li *ngFor="let task of tasksList" class="list-item">
+      <app-task-card
+        [taskId]="task.id"
+        [title]="task.title"
+        [description]="task.description"
+        [comments]="task.comments"
+      ></app-task-card>
+    </li>
+  </ul>
+  <div class="button-wrapper">
+    <button class="add-item-btn" (click)="toggleModal('taskform', listId)">
+      Add another card
+    </button>
+  </div>
+</div>

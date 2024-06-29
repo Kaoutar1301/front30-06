@@ -1,0 +1,45 @@
+/* Styles pour l'en-tête principal */
+.main-header {
+  background-color: #2F4558; /* Couleur de fond de l'en-tête */
+  color: #F6B12D; /* Couleur du texte de l'en-tête */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  border-bottom: 2px solid #335F8A; /* Bordure en bas de l'en-tête */
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.main-header a {
+  color: #F6B12D; /* Couleur du lien */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.main-header a:hover {
+  color: #F26619; /* Couleur du lien au survol */
+}
+
+.create-button {
+  background-color: #F6B12D;  /* Couleur de fond du bouton Create */
+  color: #FFFFFF; /* Couleur du texte du bouton Create */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-button:hover {
+  background-color: #F26619; /* Couleur de fond du bouton Create au survol */
+  transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+.create-button:active {
+  transform: translateY(0); /* Réinitialisation de l'élévation lors de l'activation */
+}

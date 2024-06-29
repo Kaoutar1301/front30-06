@@ -1,0 +1,8 @@
+<header class="main-header">
+  <h1><a routerLink="/home">Trello</a></h1>
+  <button class="create-button" (click)="toggleModal('projectform', projectid)">
+    Create
+  </button>
+</header>
+
+<app-modal *ngIf="isModalOpen"></app-modal>

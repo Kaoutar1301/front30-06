@@ -1,0 +1,59 @@
+.list-container {
+  background-color: #ffffff;
+  border: 1px solid #335F8A;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #335F8A;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.list-title {
+  color: #2F4558;
+  font-size: 24px;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon, .delete-icon {
+  color: #F26619;
+  cursor: pointer;
+}
+
+.list-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  margin-bottom: 10px;
+}
+
+.button-wrapper {
+  margin-top: 20px;
+}
+
+.add-item-btn {
+  background-color: #F6B12D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-item-btn:hover {
+  background-color: #F26619;
+}

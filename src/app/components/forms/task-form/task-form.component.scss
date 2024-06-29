@@ -1,0 +1,63 @@
+/* Styles pour le formulaire */
+.my-form {
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 5px; /* Bords arrondis */
+    max-width: 500px; /* Largeur maximale */
+    margin: 20px auto; /* Centrer le formulaire */
+  }
+  
+  /* Styles pour les groupes de formulaires */
+  .form-group {
+    margin-bottom: 15px; /* Espacement entre les groupes */
+  }
+  
+  /* Styles pour les étiquettes des champs */
+  label {
+    font-weight: bold; /* Texte en gras */
+    color: #333; /* Couleur du texte */
+    display: block; /* Affichage en bloc pour que l'étiquette soit au-dessus de l'input */
+    margin-bottom: 5px; /* Espacement en bas de l'étiquette */
+  }
+  
+  /* Styles pour les champs de formulaire */
+  .form-control {
+    width: 100%; /* Prend toute la largeur disponible */
+    padding: 10px; /* Espacement intérieur */
+    border: 1px solid #dcdcdc; /* Bordure grise */
+    border-radius: 5px; /* Bords arrondis */
+    font-size: 14px; /* Taille de police */
+    transition: border-color 0.3s ease-in-out; /* Transition pour l'effet focus */
+  }
+  
+  .form-control:focus {
+    border-color: #3498db; /* Bordure bleue lorsqu'il est focus */
+  }
+  
+  /* Styles pour le bouton de soumission */
+  .btn-primary {
+    background-color: #3498db; /* Fond bleu */
+    color: #ffffff; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Espacement intérieur */
+    border-radius: 5px; /* Bords arrondis */
+    cursor: pointer; /* Curseur de la souris */
+    transition: background-color 0.3s, transform 0.3s; /* Transitions pour les effets */
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9; /* Fond bleu plus foncé au survol */
+  }
+  
+  .btn-primary:active {
+    background-color: #1e6091; /* Fond encore plus foncé lorsqu'il est activé */
+    transform: scale(0.98); /* Légère réduction pour un effet de clic */
+  }
+  
+  /* Styles pour le paragraphe de tâche */
+  .task-paragraph {
+    margin-top: 20px; /* Espacement en haut du paragraphe */
+    font-size: 18px; /* Taille de police */
+    font-weight: bold; /* Texte en gras */
+    color: #333; /* Couleur du texte */
+  }
+  

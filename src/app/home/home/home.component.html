@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <!-- Dynamically display projects and pass the selected project to app-project -->
+      <app-project
+        [projects]="projects"
+        (projectClicked)="onProjectSelected($event)"
+      ></app-project>
+    </ul>
+  </div>
+  <div class="main-content">
+    <!-- Main content here -->
+    <!-- Dynamically generate app-list components for each list in the selected project -->
+
+    <ng-container *ngFor="let filteredList of filteredLists">
+      <app-list [title]="filteredList.title" [lists]="[filteredList]" [projectId]="selectedProject" [listId]="filteredList.id"></app-list>
+    </ng-container>
+    <!-- Add List button -->
+<div class="add-list" (click)="toggleModal('listform', selectedProject)">
+  <i class="fas fa-plus"></i>
+  <span>Add List</span>
+</div>
+<!-- Placeholder for adding more lists if needed -->
+</div>
+
+

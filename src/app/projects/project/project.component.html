@@ -1,0 +1,15 @@
+<div *ngFor="let project of projects" class="project-wrapper" (click)="onProjectClick(project)">
+  <div class="card">
+    <div class="card-header">
+      <h6 class="card-title">{{ project.title }}</h6>
+      <div class="icon-group">
+        <i class="fas fa-edit edit-icon"></i>
+        <i class="fas fa-trash delete-icon"></i>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-id">Project ID: {{ project.id }}</p>
+      <p class="card-text">{{ project.description }}</p>
+    </div>
+  </div>
+</div>

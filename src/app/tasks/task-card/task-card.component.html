@@ -1,0 +1,48 @@
+<div class="task-wrapper">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">{{ title }}</h5>
+      <div class="icon-group">
+        <i class="fas fa-edit edit-delete-icons"></i>
+        <i class="fas fa-trash-alt edit-delete-icons"></i>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ description }}</p>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex align-items-center mb-2">
+        <i class="fas fa-comment"></i>
+        <span class="ml-1">commentaires</span>
+      </div>
+
+      <!-- Section des commentaires -->
+      <div *ngIf="isVisible" class="comment-section">
+        <ng-container *ngFor="let comment of comments">
+          <p>{{ comment.text }}</p>
+        </ng-container>
+      </div>
+
+      <!-- Bouton pour ajouter un commentaire -->
+      <div class="button-container">
+        <button class="btn btn-outline-primary add-comment-button" (click)="toggleComments()">
+          Add Comment
+        </button>
+      </div>
+
+      <!-- Formulaire d'ajout de commentaire -->
+      <form [formGroup]="commentForm" (ngSubmit)="submitComment()" *ngIf="showComments">
+        <div class="input-container">
+          <div class="input-group">
+            <input type="text" placeholder="Add comment" class="form-control" formControlName="Text">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary submit-button" type="submit">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
