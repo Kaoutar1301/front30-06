@@ -1,7 +1,7 @@
 <div class="modal-overlay" *ngIf="isOpen">
   <div class="modal">
     <div class="modal-header">
-      <h2>{{ formType === 'projectform' ? 'My Project' : formType === 'listform' ? 'My List' : 'Add Task' }}</h2>
+      <h2>{{ formType === 'projectform' ? 'Project' : formType === 'listform' ? 'List' : 'Task' }}</h2>
       <button class="close-button" (click)="closeModal()">
         <i class="fas fa-times"></i>
       </button>

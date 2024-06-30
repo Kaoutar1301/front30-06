@@ -33,8 +33,10 @@ export class ModalComponent implements OnInit {
   public formType: string = 'projectform';
   isOpen = false;
   @Input() currentId: number = 0;
+  @Input() data: any = {};
+  @Input() projectid: number = 0;
 
-  public modalTitle: string = 'toto';
+  public modalTitle: string = '';
 
   constructor(private modalService: ModalService) {}
 
@@ -43,12 +45,17 @@ export class ModalComponent implements OnInit {
       this.isOpen = status === 'open';
     });
 
-    this.modalService.watchAction().subscribe((actionItem) => {
-      this.formType = actionItem.action; 
-      this.currentId = actionItem.Id;
+    this.modalService.watchAction().subscribe((ActionItemIdList) => {
+      this.formType = ActionItemIdList.action; 
+      this.currentId = ActionItemIdList.Id;
+      this.data = ActionItemIdList.data;
+      if ('projectid' in ActionItemIdList) {
+        this.projectid = ActionItemIdList.projectid;
+      }
     });
 
     console.log('Current ID in modal', this.currentId);
+    console.log('Data in modal', this.data);
   }
 
   requireNonEmpty(control: FormControl): { [key: string]: any } | null {

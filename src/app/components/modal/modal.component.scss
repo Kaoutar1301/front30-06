@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,19 +16,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color:var(--primary-color);
   padding: 20px;
   border-radius: 5px;
   width: 50%;
-  max-width: 400px;
-  max-height: 600px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: auto;
-  z-index: 1000;
+  max-width: 300px;
+  max-height: 500px;
 }
 
 .modal-header, .modal-footer {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,6 +38,7 @@
   align-items: center; /* Center the items vertically */
   width: 100%; 
   z-index: 1000;/* Ensure it spans the full width of the modal */
+  
 }
 
 .modal-body {
@@ -52,8 +49,8 @@
   flex-direction: column; /* Stack form elements vertically */
   width: 100%; /* Ensure full width */
   z-index: 1000;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  background-color: var(--primary-color);
+ 
 }
 
 form {
@@ -73,24 +70,20 @@ input[type="text"] {
 }
 
 button {
-  padding: 10px 20px;
-  margin-top: 10px; /* Adds space above the button */
+  padding: 5px 5px;
   border: none;
-  background-color:  #3498db;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
   z-index: 1000;
 }
 
 .close-button {
   cursor: pointer;
   border: none;
-  background:   #3498db;
-  font-size: 1.5rem;
+  background:  var(--primary-color);
+  font-size: 1rem;
 }
 
 .error-message {
@@ -104,4 +97,9 @@ button {
 
 .error-message small {
   display: block;
+}
+h2 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5em;
 }

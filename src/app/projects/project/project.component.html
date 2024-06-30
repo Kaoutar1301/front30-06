@@ -3,12 +3,13 @@
     <div class="card-header">
       <h6 class="card-title">{{ project.title }}</h6>
       <div class="icon-group">
-        <i class="fas fa-edit edit-icon"></i>
-        <i class="fas fa-trash delete-icon"></i>
+        <div class="icon-group">
+          <i class="fas fa-edit edit-icon" (click)="toggleModal('projectform', project.id, project); $event.stopPropagation()"></i>
+          <i class="fas fa-trash delete-icon" (click)="delete(project.id, formType); $event.stopPropagation()"></i>
+        </div>
       </div>
     </div>
     <div class="card-body">
-      <p class="card-id">Project ID: {{ project.id }}</p>
       <p class="card-text">{{ project.description }}</p>
     </div>
   </div>

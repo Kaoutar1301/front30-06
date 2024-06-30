@@ -5,6 +5,7 @@
   width: 100vw; /* Full viewport width */
   margin: 0; /* Removes left margin */
   padding: 0;/* Full viewport height */
+ 
 
 }
 
@@ -13,6 +14,7 @@
   top:50; /* Anchors the sidebar to the viewport */
   left: 0; /* Adjust to 'right: 0;' for a right-aligned sidebar */
   width: 20vw;
+  min-width: 300px;
   height: 100vh; /* Full viewport height */
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Adds a subtle shadow to the right */

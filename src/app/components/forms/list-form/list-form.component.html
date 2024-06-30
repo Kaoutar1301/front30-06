@@ -1,9 +1,9 @@
 <form [formGroup]="listForm" (ngSubmit)="submit()" class="my-form">
   <div class="form-group">
-    <label for="title">List Name</label>
-    <input id="title" formControlName="title" class="form-control" />
+    <input id="title" formControlName="title"  placeholder="List Name"class="form-control" />
   </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button *ngIf="!isUpdateValue" type="submit" class="custom-button">Submit</button>
+  <button *ngIf="isUpdateValue" type="button" class="custom-button" (click)="edit(currentId, formType)">Edit</button>
 </form>
 
+ 

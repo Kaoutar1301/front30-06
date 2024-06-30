@@ -16,7 +16,7 @@
       <app-list [title]="filteredList.title" [lists]="[filteredList]" [projectId]="selectedProject" [listId]="filteredList.id"></app-list>
     </ng-container>
     <!-- Add List button -->
-<div class="add-list" (click)="toggleModal('listform', selectedProject)">
+<div class="add-list" (click)="toggleModal('listform', selectedProject, filteredLists)">
   <i class="fas fa-plus"></i>
   <span>Add List</span>
 </div>

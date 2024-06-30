@@ -28,9 +28,14 @@
 }
 
 .edit-icon, .delete-icon {
-  color: #F26619;
+  color: var(--primary-color);
   cursor: pointer;
 }
+
+.edit-icon:hover, .delete-icon:hover {
+  color: var(--secondary-color);
+}
+
 
 .list-items {
   list-style-type: none;
@@ -46,7 +51,7 @@
 }
 
 .add-item-btn {
-  background-color: #F6B12D;
+  background-color: var(--primary-color);
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -55,5 +60,5 @@
 }
 
 .add-item-btn:hover {
-  background-color: #F26619;
+  background-color: var(--secondary-color);
 }

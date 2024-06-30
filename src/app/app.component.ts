@@ -4,7 +4,12 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { routes } from './app.routes';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule, provideHttpClient } from '@angular/common/http'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-root',
@@ -15,8 +20,12 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http'; // I
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    HttpClientModule, // Add HttpClientModule here
+    HttpClientModule,
+    MatIconModule,
   ],
+  providers: [
+    MatSnackBar // Move MatSnackBar to providers array
+  ]
 })
 export class AppComponent {
   title = 'Trello';

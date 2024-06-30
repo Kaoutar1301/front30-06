@@ -8,9 +8,8 @@ import { ListComponent } from '../../lists/list/list.component';
 import { GetProjectsService } from '../../services/get-projects.service';
 import { Project } from '../../models/project';
 import { List } from '../../models/lists';
-import { Comments } from '../../models/comment';
-import { Task } from '../../models/task';
 import { ApiService } from '../../services/service-api.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-home',
@@ -20,88 +19,79 @@ import { ApiService } from '../../services/service-api.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  selectedProject: number = 1;
+  selectedProject: number = 0;
   isModalOpen = false;
   projects: Project[] = [];
-  // Placeholder variables for other models
-  lists: List[] = []; // Assuming you might have a service to fetch lists
-  comments: Comments[] = []; // Assuming you might have a service to fetch comments
-  tasks: Task[] = []; // Assuming you might have a service to fetch tasks
-  filteredLists?: List[] = [];
+  filteredLists: List[] | undefined = [] ;
 
   private modalSubscription: Subscription = new Subscription();
 
   constructor(
     private modalService: ModalService,
     private getProjectsService: GetProjectsService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private storeService: StoreService
   ) {}
 
   ngOnInit() {
-    this.getProjectsService.getProjects().subscribe((projects: Project[]) => {
-      this.onProjectSelected(1);
-      this.projects = projects;
-
-      console.log('projects', projects);
-
-      // Extract lists from projects
-      this.lists = projects.flatMap((project) => project.lists);
-      // Map lists to tasks
-
-      // Map tasks to comments
-      this.comments = this.tasks.flatMap((task) => task.comments);
-    });
-    // Initialize other variables here if necessary
+    this.fetchProjects();
+    console.log(this.projects)
     this.modalSubscription = this.modalService.watch().subscribe((status) => {
       this.isModalOpen = status === 'open';
     });
+    this.subscribeToProjectChanges();
 
-    this.apiService.projectCreated$.subscribe(() => {
-      // Perform actions here, e.g., fetch new data or update the view
-      this.reloadData();
-    });
 
-    this.apiService.listCreated$.subscribe(() => {
-      // Perform actions here, e.g., fetch new data or update the view
-      this.reloadData();
-    });
-
-    this.apiService.taskCreated$.subscribe(() => {
-      // Perform actions here, e.g., fetch new data or update the view
-      this.reloadData();
-    });
+   
+    
   }
 
-  reloadData() {
-    location.reload();
-    // Logic to re-fetch data or update the component view
-  }
+  // hasFilteredLists(): boolean {
+  //   return this.filteredLists.length > 0;
+  // }
 
   ngOnDestroy() {
     this.modalSubscription.unsubscribe();
-    console.log('destruction');
+  }
+
+  private fetchProjects() {
+    this.getProjectsService.getProjects().subscribe((projects: Project[]) => {
+      this.projects = projects;
+      if (this.selectedProject) {
+        this.onProjectSelected(this.selectedProject);
+      }
+    });
+  }
+
+  private subscribeToProjectChanges() {
+    this.apiService.projectCreated$.subscribe(this.fetchProjects.bind(this));
+    this.apiService.listCreated$.subscribe(this.fetchProjects.bind(this));
+    this.apiService.taskCreated$.subscribe(this.fetchProjects.bind(this));
+    this.apiService.commentCreated$.subscribe(this.fetchProjects.bind(this));
   }
 
   onProjectSelected(projectId: number) {
     this.selectedProject = projectId;
-    console.log(this.selectedProject) // Update the selectedProject variable
-
     const selectedProject = this.projects.find(
       (project) => project.id === projectId
     );
-
-    // Filter the lists array based on the projectId
-    this.filteredLists = selectedProject?.lists;
+    this.filteredLists = selectedProject?.lists ?? [];
+    this.filteredLists = this.filteredLists ?? [];
+    // this.hasFilteredLists();
   }
 
-  toggleModal(action: string, projectId: number): void {
-    // Your logic here, for example, opening a modal and passing the action and projectId
-    console.log(`Action: ${action}, Project ID: ${projectId}`);
-    // Assuming your modal service can handle the project ID
-    this.modalService.open(action, projectId);
+  toggleModal(action: string, projectId: number, data:any): void {
+    this.storeService.isUpdate = false;
+    this.modalService.open(action, projectId,data);
   }
 
   toggleModalClose() {
     this.modalService.close();
+  }
+
+  onProjectDeleted(deletedProjectId: number) {
+    this.projects = this.projects.filter(
+      (project) => project.id !== deletedProjectId
+    );
   }
 }

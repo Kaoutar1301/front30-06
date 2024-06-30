@@ -1,5 +1,4 @@
-/* Styles pour le pied de page */
-.main-footer {
+footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -7,23 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2F4558; /* Couleur de fond */
-  color: #F6B12D; /* Couleur du texte */
+  background-color: var(--primary-color);
+  color: white;
   z-index: 100;
-}
 
-.main-footer p {
-  margin: 0;
-  font-size: 16px;
-}
-
-/* Style pour les liens dans le pied de page */
-.main-footer a {
-  color: #F6B12D; /* Couleur des liens */
-  text-decoration: none; /* Supprime le soulignement */
-  transition: color 0.3s; /* Transition fluide pour la couleur */
-}
-
-.main-footer a:hover {
-  color: #F26619; /* Couleur des liens au survol */
+  p {
+    margin: 0;
+  }
 }

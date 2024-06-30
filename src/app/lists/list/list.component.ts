@@ -7,6 +7,9 @@ import { Subscription } from 'rxjs';
 import { Task } from '../../models/task';
 import { List } from '../../models/lists';
 import { TaskCardComponent } from '../../tasks/task-card/task-card.component';
+import { ApiService } from '../../services/service-api.service';
+import { StoreService } from '../../services/store.service';
+
 
 @Component({
   selector: 'app-list',
@@ -20,30 +23,42 @@ export class ListComponent implements OnInit, OnDestroy {
   @Input() tasks: Task[] = [];
   @Input() lists: List[] = [];
   @Input() projectId: number = 0;
+  
 
   processedLists: List[] = [];
   tasksList: Task[] = [];
-
 
   @Input() listId: number = 0;
 
   private modalSubscription: Subscription = new Subscription();
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService, private apiService: ApiService, private storeService: StoreService) {}
 
   ngOnInit() {
     console.log(this.title);
     this.modalSubscription = this.modalService.watch().subscribe((status) => {
-
       // Handle modal status changes here if needed
     });
 
-
-    console.log("Listsid: ", this.listId);
-
+    console.log('Listsid: ', this.listId);
 
     this.prepareLists();
+  }
 
+  deleteList(id: number) {
+    // Step 1: Find the index of the list to delete
+    const index = this.lists.findIndex((list) => list.id === this.listId);
+
+    // Step 2: Remove the list from the lists array
+    this.lists.splice(index, 1);
+
+    // Step 3: Update the processed lists
+    this.prepareLists();
+
+    // call api service  to delete with this id
+    this.apiService.delete(id, 'list').subscribe(() => {
+      this.apiService.listCreated();
+    });
   }
 
   prepareLists() {
@@ -72,8 +87,14 @@ export class ListComponent implements OnInit, OnDestroy {
     this.modalSubscription.unsubscribe();
   }
 
-  toggleModal(action: string, id: number) {
-    this.modalService.open(action, id);
+  toggleModalList(action: string, id: number, data:any, projectid: any) {
+    this.storeService.isUpdate = false;
+    this.modalService.openList(action, id, data, projectid);
+  }
+
+  toggleModal(action: string, id: number, data: any) {
+    this.storeService.isUpdate = true;
+    this.modalService.open(action, id, data);
   }
 
   toggleModalClose() {

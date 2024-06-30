@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter,Input } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,8 @@ export class CommentComponent {
   commentForm: FormGroup = new FormGroup({
     comment: new FormControl(''),
   });
-
+  @Input() commentText: string ="";
+  @Input() commentAuthor : string ="";// Add this line
   @Output() commentSubmitted = new EventEmitter<void>(); // Add this line
 
   constructor() {}

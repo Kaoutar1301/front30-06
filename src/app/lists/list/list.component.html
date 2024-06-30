@@ -2,8 +2,8 @@
   <header class="list-header">
     <h2 class="list-title">{{ title }}</h2>
     <div class="icon-group">
-      <i class="fas fa-edit edit-icon"></i>
-      <i class="fas fa-trash delete-icon"></i>
+      <i class="fas fa-edit edit-icon"(click)="toggleModal('listform', listId ,tasksList); $event.stopPropagation()"></i>
+      <i class="fas fa-trash delete-icon" (click)="deleteList(listId)"></i>
     </div>
   </header>
   <ul class="list-items">
@@ -13,11 +13,14 @@
         [title]="task.title"
         [description]="task.description"
         [comments]="task.comments"
+        [dueDate]="task.dueDate"
+        [Listid]="listId"
+        [taskCategorie]="task.categorie"
       ></app-task-card>
     </li>
   </ul>
   <div class="button-wrapper">
-    <button class="add-item-btn" (click)="toggleModal('taskform', listId)">
+    <button class="add-item-btn" (click)=" toggleModalList('taskform', listId,tasksList, projectId)">
       Add another card
     </button>
   </div>
